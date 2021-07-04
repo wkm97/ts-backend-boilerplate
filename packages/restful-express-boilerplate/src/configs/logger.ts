@@ -3,7 +3,7 @@ import * as expressWinston from 'express-winston';
 
 const transports = [new winston.transports.Console()];
 
-const loggerOptions: winston.LoggerOptions = {
+const loggerConfig: winston.LoggerOptions = {
   transports,
   format: winston.format.combine(
     winston.format.json(),
@@ -12,7 +12,7 @@ const loggerOptions: winston.LoggerOptions = {
   ),
 };
 
-const expressLoggerOptions: expressWinston.LoggerOptions = {
+const expressLoggerConfig: expressWinston.LoggerOptions = {
   transports,
   format: winston.format.combine(
     winston.format.json(),
@@ -23,7 +23,7 @@ const expressLoggerOptions: expressWinston.LoggerOptions = {
 
 console.log('in config', process.env.LOG_LEVEL);
 if (process.env.LOG_LEVEL !== 'debug') {
-  expressLoggerOptions.meta = false;
+  expressLoggerConfig.meta = false;
 }
 
-export { loggerOptions, expressLoggerOptions };
+export { loggerConfig, expressLoggerConfig };
