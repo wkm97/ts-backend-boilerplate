@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 
-import ExpressServer from '@ui/restful/server';
+import { CustomLogger, Logger } from '@infrastructures/logger';
 
-container.register('server', { useClass: ExpressServer });
+container.register<Logger>('Logger', { useClass: CustomLogger });
 
 export default container;
